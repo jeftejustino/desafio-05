@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Loading = styled.div`
   color: #fff;
@@ -41,17 +41,58 @@ export const Owner = styled.div`
   }
 `;
 
+export const IssueContainer = styled.div`
+  padding-top: 30px;
+  margin-top: 30px;
+  border-top: 1px solid #c9c9c9;
+`;
+export const IssuePagination = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const IssueFilter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 10px;
+`;
+
+export const Button = styled.button.attrs(props => ({
+  type: 'submit',
+  disabled: props.disabled,
+}))`
+  border: 0;
+  padding: 10px 15px;
+  margin-left: 10px;
+  border-radius: 4px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background: #7159c1;
+    color: #fff;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+  }
+
+  ${props =>
+    props.k && props.k === props.filter
+      ? css`
+          background: #7159c1;
+          color: #fff;
+        `
+      : ''}
 `;
 
 export const IssueList = styled.ul`
-  padding-top: 30px;
-  margin-top: 30px;
-  border-top: 1px solid #c9c9c9;
   list-style: none;
+  padding-top: 20px;
 
   li {
     display: flex;

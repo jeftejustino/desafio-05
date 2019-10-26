@@ -63,7 +63,10 @@ export default class Main extends Component {
         loading: false,
       });
     } catch (err) {
-      this.setState({ errorInput: true, errorInputMsg: err.message });
+      this.setState({
+        errorInput: true,
+        errorInputMsg: err.response ? err.response.data.message : err.message,
+      });
     } finally {
       this.setState({ loading: false });
     }
